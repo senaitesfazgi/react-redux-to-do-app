@@ -1,6 +1,40 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Redux actions
+ * Actions are labels for what type of functionality or  manipulation
+ * we will be performing or allowing on our global state data.
+ * The action "names" ('type' property values), by convention are
+ * they are representing a constant value
+ */
+
+ const addNewToDo = () =>{
+   return {
+       type:'ADD_NEW_TO_DO'
+     }
+   }
+
+   const removeToDo = () =>{
+    return {
+        type:'REMOVE_TO_DO'
+      }
+    }
+
+    /**
+     * Redux Reducer
+     * A reducer will actually carry out the manipulation, mutation on the 
+     * state date. It should expect an action to be passed in with any necessary target dara to perform its duty.
+     */
+const toDoReducer = (state,action) =>{
+
+  switch(action.type)
+  {
+    case 'ADD_NEW_TO_DO':
+    case  'REMOVE_TO_DO':
+  }
+
+}
 class App extends React.Component {
   constructor ( props )
   {
