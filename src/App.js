@@ -1,53 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-/**
- * Redux actions
- * Actions are labels for what type of functionality or  manipulation
- * we will be performing or allowing on our global state data.
- * The action "names" ('type' property values), by convention are
- * they are representing a constant value
- */
 
- const addNewToDo = toDoContent =>{
-   return {
-       type:'ADD_NEW_TO_DO', //our action "label."
-       value:toDoContent
-     }
-   }
-
-   const removeToDo = toDoId =>{
-    return {
-        type:'REMOVE_TO_DO', //Our action "Lable"
-        value: toDoId // for remval we need a unique identifier
-      }
-    }
-
-    /**
-     * Redux Reducer
-     * A reducer will actually carry out the manipulation, mutation on the 
-     * state date. It should expect an action to be passed in with any necessary target dara to perform its duty.
-     */
-const toDoReducer = (state = [], action) =>{
-
-  switch(action.type)
-  {
-    case 'ADD_NEW_TO_DO':
-      const newTask = {
-        uniqueId: uuidv4(), // Ensure a unique ID.
-        value: action.value 
-      };
-      state.push(newTask);
-      return state;    
-
-    case  'REMOVE_TO_DO':
-       // Returns a filtered version of the array, leaving only the items that DIDN'T match the "id" parameter.
-    const state = state.filter( toDo => toDo.uniqueId !== action.value); // We'll have an array without the target!
-    // Since we can't update directly... use the setState method! This will trigger the render() method.
-    return state;
-  }
-
-}
 class App extends React.Component {
   constructor ( props )
   {
